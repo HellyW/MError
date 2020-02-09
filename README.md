@@ -25,13 +25,17 @@
 const MError = require('/utils/MError')
 ```
 
->在`onLaunch`内加入如下代码，`key`更换为您自己的key 
+> ~~在`onLaunch`内加入如下代码，`key`更换为您自己的key~~
+> 在`app.js`的`App({})`内加入如下代码，`key`更换为您自己的key
 > **建议使用临时key，如需项目组多人接收，建议使用不公开的订阅链接key。获取方式：https://support.qq.com/products/111465/faqs/58267**
 > 
 
 ```
-!this.mError && ( this.mError = new MError(key,'推送标题') )
+~~!this.mError && ( this.mError = new MError(key,'推送标题') )~~
+$mError: new MError(key,'推送标题')
 ```
+
+> 在需要输出错误日志的地方也可以通过`app.$mError.log(error)`的方式标记
 
 ### 效果
 
