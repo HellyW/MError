@@ -118,7 +118,12 @@ module.exports = class MError {
           accountInfo: accountInfo,
           systemInfo: systemInfo,
           launchOptions: launchOptions,
-          storageInfo: wx.getStorageInfoSync ? wx.getStorageInfoSync() : {}
+          storageInfo: (wx.getStorageInfoSync ? wx.getStorageInfoSync() : {}).keys.map(v=>{
+            return {
+              key: v,
+              value: wx.getStorageSync ? wx.getStorageSync(v) : null
+            }
+          })
         })
       }
       this.getUser().then(userInfo => {
